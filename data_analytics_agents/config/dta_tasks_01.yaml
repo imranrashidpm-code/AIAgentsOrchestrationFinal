@@ -1,0 +1,64 @@
+dta_metric_definitions_task:
+  description: >
+    Create metric and KPI definition documentation.
+
+    User request:
+    {user_prompt}
+
+    Data governance, privacy, and tooling constraints:
+    {constraints}
+
+    Business, product, and source-system context:
+    {business_context}
+  expected_output: >
+    Markdown: Metric list table (name | def | q | unit | dim | source | owner | refresh); Data
+    quality notes; Gaps and follow-ups.
+
+dta_dashboard_spec_task:
+  description: >
+    Specify a dashboard (or set) for the audience and use case described.
+
+    User request:
+    {user_prompt}
+
+    Constraints (BI tool, self-serve vs curated, RLS, SLAs on freshness):
+    {constraints}
+
+    Data availability and key entities:
+    {business_context}
+  expected_output: >
+    Markdown: User stories; Per-tab layout; Key visuals; Interactions; Filters; DQC checks;
+    “When not to use this dashboard”.
+
+dta_event_schema_narrative_task:
+  description: >
+    Design an event and property schema for product analytics, aligned to the use case.
+
+    User request:
+    {user_prompt}
+
+    Constraints (consent, mobile/web, PII policy):
+    {constraints}
+
+    Funnels, systems, and identity context (logged-in state, etc.):
+    {business_context}
+  expected_output: >
+    Markdown: Principles; Event catalog (table); Example payloads; PII/PHI; Versioning; QA
+    checklists; Open questions for engineers.
+
+dta_warehouse_dbt_conceptual_task:
+  description: >
+    Describe a conceptual warehouse + dbt model for the business domain, not production DDL unless
+    the user asks.
+
+    User request:
+    {user_prompt}
+
+    Constraints (cloud warehouse, dbt, multi-tenancy, regions):
+    {constraints}
+
+    Source systems and key entities:
+    {business_context}
+  expected_output: >
+    Markdown: Layers; Core dimensions/facts; SCD; Incremental model notes; Test strategy;
+    Mermaid lineage (optional, valid); Risks; Handoff to implementation.

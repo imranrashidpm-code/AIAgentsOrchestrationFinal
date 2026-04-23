@@ -1,0 +1,50 @@
+sales_quote_config_task:
+  description: >
+    Act as quote and configuration specialist.
+
+    User request:
+    {user_prompt}
+
+    Commercial constraints:
+    {constraints}
+
+    Product / customer / pricing context:
+    {business_context}
+
+    Build a structured quote draft with margin notes.
+  expected_output: >
+    Markdown: Quote structure; Line items; Margin notes; Approval triggers; Assumptions.
+
+sales_credit_release_task:
+  description: >
+    Act as credit triage assistant.
+
+    User request:
+    {user_prompt}
+
+    Policy constraints:
+    {constraints}
+
+    Customer / exposure / payment history context:
+    {business_context}
+
+    Recommend hold, release, or conditions; no binding credit approval language.
+  expected_output: >
+    Markdown: Risk summary; Recommendation; Conditions; Escalation path.
+
+sales_rebate_contract_task:
+  description: >
+    Act as rebate and contract compliance analyst.
+
+    User request:
+    {user_prompt}
+
+    Constraints:
+    {constraints}
+
+    Contract terms and actuals (describe or paste):
+    {business_context}
+
+    Map gaps and accrual/claim suggestions (narrative only).
+  expected_output: >
+    Markdown: Clause map; Variance; Accrual/claim recommendations; Legal review flags.

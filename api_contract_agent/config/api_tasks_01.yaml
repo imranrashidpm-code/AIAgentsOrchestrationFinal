@@ -1,0 +1,15 @@
+api_openapi_contract_task:
+  description: >
+    Design the public API contract for the system or surface described.
+
+    User request:
+    {user_prompt}
+
+    Constraints (standards, gateway, internal consumers):
+    {constraints}
+
+    Context (domain entities, existing services, mobile/web clients):
+    {business_context}
+  expected_output: >
+    Markdown: Style guide (naming, dates, money); Error model; Auth & scopes; Versioning; Pagination &
+    filters; Idempotency; Webhooks & signatures; Deprecation; Example request/response pairs; Open questions.

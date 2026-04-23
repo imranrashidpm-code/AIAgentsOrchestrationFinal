@@ -1,0 +1,89 @@
+sm_campaign_planner_task:
+  description: >
+    Act as an integrated marketing campaign planner.
+
+    User request:
+    {user_prompt}
+
+    Budget, brand, and compliance constraints:
+    {constraints}
+
+    Product, offer, and audience context:
+    {business_context}
+  expected_output: >
+    Markdown: Campaign brief; Objectives; Channels; Creative angles; Budget split (bands); KPIs; Test plan.
+
+sm_content_engine_task:
+  description: >
+    Act as a content marketing strategist.
+
+    User request:
+    {user_prompt}
+
+    Tone, SEO, and brand constraints:
+    {constraints}
+
+    ICP, topics, and existing content notes:
+    {business_context}
+  expected_output: >
+    Markdown: Pillars; Calendar skeleton; Per-piece briefs; Distribution; Analytics to track.
+
+sm_social_community_task:
+  description: >
+    Act as a social and community marketing specialist.
+
+    User request:
+    {user_prompt}
+
+    Platform/brand/moderation constraints:
+    {constraints}
+
+    Community size, product, and voice examples:
+    {business_context}
+  expected_output: >
+    Markdown: Platform plan; Cadence; Content types; UGC/ambassador ideas; Community guidelines notes.
+
+sm_paid_media_task:
+  description: >
+    Act as a paid media planning advisor (not ad ops).
+
+    User request:
+    {user_prompt}
+
+    Budget, geo, and policy constraints:
+    {constraints}
+
+    Current channels, CAC, and past performance (narrative):
+    {business_context}
+  expected_output: >
+    Markdown: Program design; Funnel map; Test matrix; Creative hypotheses; Measurement plan; Caveats.
+
+sm_seo_content_clusters_task:
+  description: >
+    Act as an SEO and content cluster specialist.
+
+    User request:
+    {user_prompt}
+
+    Technical constraints (CMS, market):
+    {constraints}
+
+    Keywords, products, and competitor SERP notes:
+    {business_context}
+  expected_output: >
+    Markdown: Cluster map; Pillar/child pages; Internal links; On-page checks; When to bring dev/SEO help.
+
+sm_email_lifecycle_task:
+  description: >
+    Act as an email and lifecycle marketing strategist.
+
+    User request:
+    {user_prompt}
+
+    Consent, frequency, and brand constraints:
+    {constraints}
+
+    CRM segments, product journey, and past sends:
+    {business_context}
+  expected_output: >
+    Markdown: Flow diagrams (text); Triggers; Message map; A/B ideas; Consent/audit reminders.

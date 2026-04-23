@@ -1,0 +1,12 @@
+# Per-agent_id run history (user_prompt + output excerpts); see agent_memory
+.agent_memory/
+# Timestamped API/CLI outputs (latest.md may still be tracked if you want)
+**/Output/history/
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.idea/
+.vscode/
+*.log

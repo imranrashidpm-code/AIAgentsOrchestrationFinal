@@ -1,0 +1,87 @@
+pm_requirements_backlog_task:
+  description: >
+    Elicit and structure **requirements and backlog** for the described new project, feature,
+    major fix, or upgrade.
+
+    User request:
+    {user_prompt}
+
+    Constraints (priority, must-haves, regulatory):
+    {constraints}
+
+    Product and user context (personas, systems):
+    {business_context}
+  expected_output: >
+    Markdown: Epics; User stories in “As a / I want / so that” with acceptance criteria; NFRs
+    (security, performance, a11y, i18n); Out of scope; Traceability table (story → data → API
+    at high level).
+
+pm_erd_data_model_task:
+  description: >
+    Create a **data model** for the work described, including a **Mermaid** ERD.
+
+    User request:
+    {user_prompt}
+
+    Data and compliance constraints:
+    {constraints}
+
+    Context (legacy DB, multi-tenancy, PII):
+    {business_context}
+  expected_output: >
+    Markdown: Conceptual overview; Mermaid `erDiagram` block with entities, attributes, PK/FK, and
+    relationships; Uniqueness and soft-delete notes; Open questions for the DBA.
+
+pm_backend_architecture_task:
+  description: >
+    Describe **backend architecture** for the solution: services, integration, and operations
+    (text + Mermaid diagrams as needed).
+
+    User request:
+    {user_prompt}
+
+    Technical and security constraints:
+    {constraints}
+
+    Context (stack hints, idp, message bus):
+    {business_context}
+  expected_output: >
+    Markdown: Service boundaries; API surface (REST/GraphQL/events); AuthN/Z; Data access pattern;
+    Background jobs; At-least-once / idempotency; Mermaid (sequence or flowchart) for key flows;
+    Observability; Deployment notes.
+
+pm_frontend_architecture_task:
+  description: >
+    Describe **frontend architecture** and how UI work is organized for the project.
+
+    User request:
+    {user_prompt}
+
+    UX and performance constraints:
+    {constraints}
+
+    Design system, platforms (web/mobile), and API contract hints:
+    {business_context}
+  expected_output: >
+    Markdown: App structure; Routes and navigation; State strategy; Form and validation; Error
+    handling; i18n/a11y hooks; Caching; Mermaid (optional) for high-level module diagram; Test pyramid
+    (unit/E2E) notes.
+
+pm_sprint_parallel_roadmap_task:
+  description: >
+    Build a **multi-sprint plan** with **parallel workstreams** (e.g. backend, frontend, data, DevOps,
+    design, QA) for the scope implied by the user.
+
+    User request:
+    {user_prompt}
+
+    Cadence and team constraints (sprint length, FTE, holidays):
+    {constraints}
+
+    Context (MVP, release train, feature flags):
+    {business_context}
+  expected_output: >
+    Markdown: Assumptions; Suggested number of sprints; **Per-sprint** goals and DoD; **Parallel
+    tracks** table (Track | Owner | Sprint N work | Dependency | Blocker risk); Gantt-style or
+    dependency table; Critical path; What can run in parallel vs sequential gates; Post-MVP / hardening
+    sprints if applicable.

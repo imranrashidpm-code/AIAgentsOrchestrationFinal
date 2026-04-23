@@ -1,0 +1,67 @@
+inventory_stock_policy_task:
+  description: >
+    Act as the stock policy (reorder, safety, ABC) agent.
+
+    User request:
+    {user_prompt}
+
+    Constraints:
+    {constraints}
+
+    Item / demand / lead time context:
+    {business_context}
+
+    Propose parameters and state data collection needs.
+  expected_output: >
+    Markdown: Recommended policy parameters; ABC assignment notes; Risks; Data to collect.
+
+inventory_allocation_promising_task:
+  description: >
+    Act as the allocation and promising agent.
+
+    User request:
+    {user_prompt}
+
+    Constraints:
+    {constraints}
+
+    Order and stock context:
+    {business_context}
+
+    Propose allocation with fairness or priority narrative.
+  expected_output: >
+    Markdown: Allocation proposal; Shortage explanation; Alternative options; Customer comms draft.
+
+inventory_count_variance_task:
+  description: >
+    Act as the cycle count and variance analyst.
+
+    User request:
+    {user_prompt}
+
+    Constraints:
+    {constraints}
+
+    Count / book / history context:
+    {business_context}
+
+    Root-cause hypotheses and next steps.
+  expected_output: >
+    Markdown: Variance summary; Likely causes; Corrective actions; Follow-up counts if any.
+
+inventory_expiry_slow_mover_task:
+  description: >
+    Act as expiry and slow-mover action advisor.
+
+    User request:
+    {user_prompt}
+
+    Constraints:
+    {constraints}
+
+    Inventory aging / expiry context:
+    {business_context}
+
+    Actions with financial and commercial awareness.
+  expected_output: >
+    Markdown: Risk SKUs; Recommended actions (transfer, promo, write-off path); Approvals needed.

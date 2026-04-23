@@ -1,0 +1,15 @@
+int_bff_patterns_task:
+  description: >
+    Propose an integration and BFF approach for the system.
+
+    User request:
+    {user_prompt}
+
+    Constraints (SaaS vs on-prem, partners, message bus, latency):
+    {constraints}
+
+    Context (monoliths, microservices, mobile/web clients, IdP, payment providers):
+    {business_context}
+  expected_output: >
+    Markdown: Context diagram; BFF per client vs shared API; Partner integration list; Event/outbox;
+    Resilience; Data transformation & ACL; Caching; Failure modes; Team ownership.

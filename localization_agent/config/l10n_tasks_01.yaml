@@ -1,0 +1,15 @@
+i18n_l10n_spec_task:
+  description: >
+    Document internationalization and localization for the product.
+
+    User request:
+    {user_prompt}
+
+    Constraints (target markets, brand voice, third-party TM tool):
+    {constraints}
+
+    Context (tech stack, design system, existing languages):
+    {business_context}
+  expected_output: >
+    Markdown: Locale list; i18n framework guidance; String extraction; Plural/ICU; Formatting; RTL
+    checklist; Content workflow; QA (pseudo-loc); Risks; Open questions for translators/PM.

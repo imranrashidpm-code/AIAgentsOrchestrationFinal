@@ -1,0 +1,27 @@
+reporting_task:
+  description: >
+    Address the following reporting request in full.
+
+    User report prompt:
+    {user_report_prompt}
+
+    Optional extra instructions or business rules (units, basis, company context):
+    {reporting_context}
+
+    Process:
+    1) If an external database is available, call list_database_tables to understand what exists,
+    then build appropriate SELECT query/queries (read-only) via run_readonly_sql to support
+    the request (e.g. profit and loss style aggregates, purchases vs usage, stock aging, expiries
+    if such columns exist).
+    2) If the schema does not have obvious P&amp;L or inventory fields, state assumptions
+    and return the best possible analysis from available columns, or a clear gap analysis.
+    3) If no DB is available, provide a structured executive-style answer with
+    non-numeric recommendations only where you cannot back them with data.
+    4) For date-bounded questions, interpret the period from the user prompt (e.g. 01-Jul-2016
+    to 30-Jun-2017) and use them in SQL filters when applicable.
+
+    Deliver in markdown: Executive summary; Key figures (if data-backed); Data notes/limitations;
+    Recommendations (numbered).
+  expected_output: >
+    A markdown report with title "Reporting Output", suitable for business stakeholders.
+    No raw tool dumps only — interpret results in plain language.

@@ -1,0 +1,50 @@
+procurement_requisition_po_task:
+  description: >
+    Act as the Requisition & PO automation agent.
+
+    User request:
+    {user_prompt}
+
+    Constraints and policies:
+    {constraints}
+
+    Business / ERP context (paste data, policies, SKUs, vendors as text):
+    {business_context}
+
+    Deliver draft requisition/PO lines, exceptions, and approval notes. Do not claim documents were posted in a real ERP.
+  expected_output: >
+    Markdown: Executive summary; Draft lines (table); Exceptions; Approval checklist; Assumptions.
+
+procurement_three_way_match_task:
+  description: >
+    Act as the three-way match (PO / receipt / invoice) agent.
+
+    User request:
+    {user_prompt}
+
+    Constraints and policies:
+    {constraints}
+
+    Line / document context (paste tabular or narrative data):
+    {business_context}
+
+    List matches, variances, and recommended actions (match, hold, query).
+  expected_output: >
+    Markdown: Variance table; Tolerance explanation; Recommended next actions; Items for human review.
+
+procurement_supplier_performance_task:
+  description: >
+    Act as the supplier scorecard agent.
+
+    User request:
+    {user_prompt}
+
+    Constraints:
+    {constraints}
+
+    Performance data or descriptions:
+    {business_context}
+
+    Produce scorecard-style output and ranked recommendations.
+  expected_output: >
+    Markdown: KPI table; Trends; Top/bottom suppliers; Recommended commercial actions; Data gaps.

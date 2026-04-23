@@ -1,0 +1,16 @@
+mob_stack_architecture_task:
+  description: >
+    Document the mobile architecture for the product described.
+
+    User request:
+    {user_prompt}
+
+    Constraints (team, timeline, markets, compliance):
+    {constraints}
+
+    Context (existing backend, web app, auth, regions):
+    {business_context}
+  expected_output: >
+    Markdown with: Executive summary; Platform strategy (native vs cross-platform matrix);
+    App modules and navigation; Local data & offline; Push & deep links; Biometrics/secure storage;
+    Networking & API client; Build/env (dev/stage/prod); Test strategy outline; Open risks & decisions.

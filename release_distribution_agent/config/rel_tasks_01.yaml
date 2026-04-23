@@ -1,0 +1,15 @@
+rel_app_distribution_task:
+  description: >
+    Define the release and distribution strategy for the product.
+
+    User request:
+    {user_prompt}
+
+    Constraints (release cadence, compliance, app stores, team size):
+    {constraints}
+
+    Context (CI system, k8s, static web, mobile targets, feature flag vendor):
+    {business_context}
+  expected_output: >
+    Markdown: Pipelines; Branching; Env promotion; Web deploy; Mobile signing overview; Betas; Store
+    submission; Feature flags; Rollback; Operational checklist; Open risks.

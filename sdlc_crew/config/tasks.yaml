@@ -1,0 +1,164 @@
+requirements_gathering_task:
+  description: >
+    Run structured requirements gathering for the following scope.
+
+    Project brief:
+    {project_brief}
+
+    Additional constraints or standards:
+    {constraints}
+
+    Module / feature area focus (may be full product):
+    {module_scope}
+
+    Sprint or delivery slice context (timeline, goals, dependencies):
+    {sprint_context}
+
+    Deliver: (1) restated goals and success metrics, (2) stakeholder / persona list,
+    (3) in-scope vs out-of-scope for this module slice, (4) assumptions and risks,
+    (5) open questions for business or technical follow-up, (6) glossary of key terms,
+    (7) traceability IDs for major themes (e.g. RG-01…).
+    Do NOT design the system or database here—stay in discovery and intent space.
+  expected_output: >
+    A markdown document titled "Requirements Gathering" with the sections above.
+    Use tables where helpful. Prefix lines with [Assumption] or [Open Question] where applicable.
+
+analysis_task:
+  description: >
+    Using the Requirements Gathering output as primary input (provided via task context),
+    perform structured business and product analysis for the same module and sprint scope.
+
+    Reference inputs for alignment (must stay consistent with prior work):
+    Module scope: {module_scope}
+    Sprint context: {sprint_context}
+    Constraints: {constraints}
+
+    Deliver: (1) problem statement and value proposition, (2) user journeys or
+    process diagrams in text, (3) backlog-ready user stories with Given/When/Then
+    acceptance criteria, (4) MoSCoW prioritization, (5) cross-module dependencies,
+    (6) non-functional requirements mapped to stories, (7) feasibility and regulatory notes.
+  expected_output: >
+    A markdown document titled "Analysis & Backlog" with numbered requirements/stories
+    (e.g. BR-01, US-01) suitable for architecture and estimation.
+
+architecture_task:
+  description: >
+    Using Requirements Gathering and Analysis outputs (from context), produce the
+    solution architecture for: {module_scope}
+
+    Sprint / delivery context: {sprint_context}
+    Constraints: {constraints}
+
+    Cover: (1) context diagram and component boundaries, (2) web vs mobile vs desktop
+    responsibilities—explicitly state which client platforms are in scope and how they
+    share APIs and auth, (3) integration and async/event patterns if any, (4) security
+    (authN/Z, secrets, PII), (5) reliability and performance targets, (6) major ADRs (2–5),
+    (7) risks and mitigations. Align every major decision to requirement/story IDs from analysis.
+  expected_output: >
+    A markdown document titled "Technical Architecture" with an ADR subsection and
+    explicit "Platform coverage" (Web / Android / iOS / Desktop) stating in/out for each.
+
+database_development_task:
+  description: >
+    From architecture and analysis (context), define the database / persistence design
+    for: {module_scope}
+
+    Constraints: {constraints}
+
+    Include: (1) conceptual ER overview, (2) logical model (entities, keys, relationships),
+    (3) physical outline (types, indexes, constraints), (4) migration and seed strategy,
+    (5) concurrency controls for hot paths, (6) audit and soft-delete strategy,
+    (7) reporting or read-model notes. Reference story/requirement IDs for traceability.
+  expected_output: >
+    A markdown document titled "Database Design" with DDL-style sketches or table
+    definitions and a "Change safety" subsection for migrations.
+
+web_application_task:
+  description: >
+    Produce the WEB-ONLY implementation blueprint for: {module_scope}
+
+    Sprint context: {sprint_context}
+    Constraints: {constraints}
+
+    Use prior context (gathering, analysis, architecture, database) as source of truth.
+    Cover: stack recommendation (e.g. React/Next), routing, layout, auth integration,
+    API client layer, caching, i18n/a11y, error/loading states, env config, and folder
+    structure. Mark "Out of scope" for native mobile/desktop—do not duplicate those here.
+    Include concrete interface examples (TypeScript types, fetch hooks, or OpenAPI refs).
+  expected_output: >
+    A markdown document titled "Web Application Plan" with sections: Stack, Structure,
+    Screens/flows, API usage, Security, Observability, Build/run commands.
+
+android_application_task:
+  description: >
+    Produce the ANDROID-ONLY implementation blueprint for: {module_scope}
+
+    Sprint context: {sprint_context}
+    Constraints: {constraints}
+
+    Use prior task context including the Web Application Plan for API parity and UX alignment.
+    Cover: Gradle/modules, Jetpack (Compose/XML), navigation, DI (Hilt/Koin), networking,
+    offline/cache policy if any, notifications, Play compliance, minSdk/targetSdk, ProGuard,
+    testing (unit/UI), and release tracks. State explicitly how features align with web.
+  expected_output: >
+    A markdown document titled "Android Application Plan" with module diagram (text),
+    key screens, and Gradle-oriented build notes.
+
+ios_application_task:
+  description: >
+    Produce the iOS-ONLY implementation blueprint for: {module_scope}
+
+    Sprint context: {sprint_context}
+    Constraints: {constraints}
+
+    Use prior context including Web and Android plans for parity notes and shared contracts.
+    Cover: SwiftUI/UIKit split, navigation, dependency injection, networking, Keychain,
+    push/APNs if needed, App Store review risks, OS version matrix, XCTest strategy,
+    and CI scheme names. Flag platform-specific UX per HIG.
+  expected_output: >
+    A markdown document titled "iOS Application Plan" with targets, schemes, and screen list.
+
+desktop_application_task:
+  description: >
+    Produce the DESKTOP-ONLY implementation blueprint for: {module_scope}
+
+    Sprint context: {sprint_context}
+    Constraints: {constraints}
+
+    Use prior context including web and mobile plans. Choose and justify Electron vs Tauri
+    vs .NET MAUI vs Flutter desktop. Cover packaging, code signing, auto-update, OS menus,
+    file system access if any, and enterprise deployment. Mark N/A with reason if desktop
+    is out of scope for this product.
+  expected_output: >
+    A markdown document titled "Desktop Application Plan" with installer/update strategy
+    and security notes.
+
+qa_task:
+  description: >
+    Build QA and test architecture using all prior outputs in context for: {module_scope}
+
+    Sprint context: {sprint_context}
+    Constraints: {constraints}
+
+    Include: (1) test strategy and pyramid per platform (web, Android, iOS, desktop),
+    (2) environments and test data, (3) traceable test case tables (TC-xx) linked to BR/US IDs,
+    (4) automation tooling (Playwright/Cypress; Espresso/XCUITest; desktop drivers as fits),
+    (5) non-functional tests (performance, security, accessibility), (6) entry/exit criteria
+    for the sprint or release train.
+  expected_output: >
+    A markdown document titled "Quality Assurance Plan" with traceability matrices.
+
+devops_task:
+  description: >
+    Define DevOps, CI/CD, and release operations consistent with architecture, database,
+    all four application plans, and QA for: {module_scope}
+
+    Sprint context: {sprint_context}
+    Constraints: {constraints}
+
+    Cover: pipeline stages per artifact type (services, web, Android, iOS, desktop),
+    signing and store submission outline for mobile, desktop packaging and updates,
+    environment promotion, secrets management, database migration gates, observability,
+    feature flags, rollback, and on-call/incident basics.
+  expected_output: >
+    A markdown document titled "DevOps & Release" suitable as a runbook appendix.

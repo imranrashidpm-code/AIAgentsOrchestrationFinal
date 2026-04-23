@@ -1,0 +1,74 @@
+sm_lead_research_icp_task:
+  description: >
+    Act as the ICP and lead research specialist.
+
+    User request:
+    {user_prompt}
+
+    Constraints (geo, industry rules, data ethics):
+    {constraints}
+
+    Business / market context (paste notes, prior ICP, segments):
+    {business_context}
+  expected_output: >
+    Markdown: ICP summary; Personas; Where to find leads; Qualification; Research checklist; Gaps.
+
+sm_pipeline_forecast_task:
+  description: >
+    Act as pipeline and forecast review specialist.
+
+    User request:
+    {user_prompt}
+
+    Constraints (region, product line, time horizon):
+    {constraints}
+
+    Pipeline snapshot or narrative (stages, $, push rates):
+    {business_context}
+  expected_output: >
+    Markdown: Health read; Risk flags; Rep/manager questions; QBR talking points; Data to pull from CRM.
+
+sm_deal_coaching_task:
+  description: >
+    Act as a deal / opportunity coach.
+
+    User request:
+    {user_prompt}
+
+    Process rules (MEDDIC, comp policy):
+    {constraints}
+
+    Deal context (stakeholders, value, blockers):
+    {business_context}
+  expected_output: >
+    Markdown: Diagnosis; Next steps; Stakeholder gaps; Risk register; When to loop legal/finance/SE.
+
+sm_pricing_packaging_task:
+  description: >
+    Act as pricing and packaging advisor.
+
+    User request:
+    {user_prompt}
+
+    Constraints (margin floor, contract rules):
+    {constraints}
+
+    Product, packaging, and competitor context:
+    {business_context}
+  expected_output: >
+    Markdown: Packaging options; Price thesis; Guardrails; Discount policy hints; Assumptions for FP&A.
+
+sm_account_growth_task:
+  description: >
+    Act as key account and expansion planning specialist.
+
+    User request:
+    {user_prompt}
+
+    Constraints (segment, product scope):
+    {constraints}
+
+    Account / usage / stakeholder context:
+    {business_context}
+  expected_output: >
+    Markdown: White-space map; Plays; Success metrics; CSM/AM joint actions; Assumptions.

@@ -1,0 +1,59 @@
+sm_brand_messaging_task:
+  description: >
+    Act as a brand and messaging architect.
+
+    User request:
+    {user_prompt}
+
+    Brand, legal, and segment constraints:
+    {constraints}
+
+    Product proof points, customers, and voice examples:
+    {business_context}
+  expected_output: >
+    Markdown: Positioning; Value props; Tagline options; Message house; Do/do not; Legal review callouts.
+
+sm_events_webinars_task:
+  description: >
+    Act as an events and field marketing planner.
+
+    User request:
+    {user_prompt}
+
+    Budget, date, and brand constraints:
+    {constraints}
+
+    Audience, topic, and logistics notes:
+    {business_context}
+  expected_output: >
+    Markdown: Objectives; Agenda (RoS); Promotion plan; Speaker brief; Lead follow-up; Checklists.
+
+sm_competitive_intel_task:
+  description: >
+    Act as a competitive battlecard drafter.
+
+    User request:
+    {user_prompt}
+
+    Sensitivity and legal constraints:
+    {constraints}
+
+    Intel, links, and customer feedback (pasted or described):
+    {business_context}
+  expected_output: >
+    Markdown: Battlecard; SWOT-style; Talk tracks; Landmines; Confidence labels; "Verify before use" list.
+
+sm_product_launch_gtm_task:
+  description: >
+    Act as a product marketing and launch GTM specialist.
+
+    User request:
+    {user_prompt}
+
+    Date, market, and channel constraints:
+    {constraints}
+
+    Product, pricing, and enablement context:
+    {business_context}
+  expected_output: >
+    Markdown: GTM one-pager; Audiences; Narrative; Channel plan; Sales enablement outline; Success metrics; Risks.

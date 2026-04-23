@@ -1,0 +1,82 @@
+hrt_role_description_task:
+  description: >
+    Draft a job description and leveling guidance from the user request. Emphasize outcomes and
+    skills, not personal traits that could read as bias.
+
+    User request:
+    {user_prompt}
+
+    HR / policy / regional constraints (if any):
+    {constraints}
+
+    Team, org size, and reporting context:
+    {business_context}
+  expected_output: >
+    Markdown: Role title; Mission; Outcomes; Responsibilities; Must-have vs nice-to-have; Interview
+    signals; EEO/DEI check note; Stakeholder review list.
+
+hrt_compensation_bands_task:
+  description: >
+    Draft a compensation band narrative. If the user did not provide numbers, do not invent exact
+    market figures—use structure and process language.
+
+    User request:
+    {user_prompt}
+
+    Comp philosophy / limits / equity (constraints):
+    {constraints}
+
+    Levels, org, and geography (context):
+    {business_context}
+  expected_output: >
+    Markdown: Comp components; How bands map to levels; Sample band table (placeholders if needed);
+    Governance; Pay equity and audit handoffs; What legal/Total Rewards must approve.
+
+hrt_interview_plan_task:
+  description: >
+    Create an interview and assessment plan for the role or hiring scenario.
+
+    User request:
+    {user_prompt}
+
+    Constraints (time, panel size, work-sample limits):
+    {constraints}
+
+    Role requirements and org culture notes:
+    {business_context}
+  expected_output: >
+    Markdown: Stages; Competency map; Per-round question bank; Scorecard; Anti-bias & logistics;
+    Decision rubric; Legal caution on protected characteristics.
+
+hrt_lnd_program_outline_task:
+  description: >
+    Outline an L&D program to meet the need described.
+
+    User request:
+    {user_prompt}
+
+    Delivery constraints (budget, time, tools):
+    {constraints}
+
+    Audience, skill gaps, and business goals:
+    {business_context}
+  expected_output: >
+    Markdown: Objectives; Syllabus by module; Formats; Assessment; NPS/skill shift metrics;
+    Reinforcement; Owner roles.
+
+hrt_performance_review_structure_task:
+  description: >
+    Propose a performance / growth process structure. Not legal advice.
+
+    User request:
+    {user_prompt}
+
+    Process constraints (cadence, union, enterprise HRIS):
+    {constraints}
+
+    Culture, remote/hybrid, and team context:
+    {business_context}
+  expected_output: >
+    Markdown: Cadence; Goals & feedback; Self/manager/peer; Calibration; Rating scale (if any);
+    Documentation; Manager enablement; ER/legal escalation guidance (high level); PIP & ethics
+    notes where relevant.

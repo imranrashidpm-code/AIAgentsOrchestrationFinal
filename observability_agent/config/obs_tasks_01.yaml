@@ -1,0 +1,15 @@
+obs_product_platform_task:
+  description: >
+    Define observability for the system or product area described.
+
+    User request:
+    {user_prompt}
+
+    Constraints (budget, existing vendor, on-call maturity):
+    {constraints}
+
+    Context (k8s, serverless, mobile, web, data pipeline):
+    {business_context}
+  expected_output: >
+    Markdown: Objectives; Golden signals; Metric catalog; Log fields & PII; Tracing; RUM; Dashboards
+    (outline); Alerting policy; Runbooks link-out; Gaps and instrumentation backlog.

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Orchestrator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css?v=2" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Connection and links">
+        <div class="sidebar-brand">
+          <div class="brand-mark" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.5" fill="none" />
+              <path d="M2 17l10 5 10-5" stroke="currentColor" stroke-width="1.5" fill="none" />
+              <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5" fill="none" />
+            </svg>
+          </div>
+          <div class="brand-text">
+            <span class="brand-name">Orchestrator</span>
+            <span class="brand-sub">AI Agents</span>
+          </div>
+        </div>
+        <p class="sidebar-intro">
+          LLM and <code>OPENAI_API_KEY</code> live on the <strong>server</strong> (<code>.env</code>). This UI only
+          sends requests; optional <code>llm_model</code> overrides per run.
+        </p>
+        <div class="sidebar-section">
+          <h2 class="sidebar-heading">
+            <span class="sidebar-heading-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                ><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" /><path
+                  d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+              /></svg>
+            </span>
+            Connection
+          </h2>
+          <label for="apiBase">API base (server root, not <code>/app</code>)</label>
+          <input
+            id="apiBase"
+            type="url"
+            value="http://127.0.0.1:8080"
+            placeholder="http://127.0.0.1:8080"
+            autocomplete="off"
+            title="Use http://host:port only. If you paste .../app, it is auto-corrected."
+          />
+          <p class="hint">Empty = same origin as this page. Must be the API root (e.g. <code>http://127.0.0.1:8080</code>); <strong>not</strong> the <code>/app</code> page URL, or you will get 404 on <code>/v1/…</code>.</p>
+          <label for="apiKey" class="label-mt">Bearer token</label>
+          <input
+            id="apiKey"
+            type="password"
+            placeholder="ORCHESTRATOR_API_KEY (not OpenAI)"
+            autocomplete="off"
+          />
+          <p class="hint">Must match <code>ORCHESTRATOR_API_KEY</code> in server <code>.env</code> when set.</p>
+        </div>
+        <div class="sidebar-footer">
+          <a class="sidebar-link" href="/docs" target="_blank" rel="noopener"
+            >OpenAPI <span class="kbd">/docs</span></a
+          >
+          <a class="sidebar-link" href="/" target="_blank" rel="noopener">API root</a>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <div class="workspace-inner">
+          <div class="chrome-bar">
+            <div class="chrome-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+            <span class="chrome-title">Run agent</span>
+          </div>
+
+          <section class="card card-compact" aria-label="Agent selection">
+            <div class="grid-agents">
+              <div>
+                <label for="pack">Agent pack</label>
+                <select id="pack"></select>
+              </div>
+              <div id="agentWrap" hidden>
+                <label for="agent">Agent</label>
+                <select id="agent"></select>
+              </div>
+            </div>
+            <div class="row-model">
+              <div class="field-grow">
+                <label for="llmModel">Model</label>
+                <div class="row-inline">
+                  <select id="llmModel"></select>
+                  <input id="llmCustom" type="text" placeholder="Custom model id" />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="card card-editor" aria-label="Prompts">
+            <div class="editor-header">
+              <span class="editor-tab editor-tab-active">Input</span>
+            </div>
+            <div class="editor-body">
+              <label for="userPrompt" id="promptLabel">User prompt / task</label>
+              <textarea id="userPrompt" class="input-editor" placeholder="What you want the agent to do…" rows="5"></textarea>
+              <div id="agentFields">
+                <label for="constraints" class="label-mt">Constraints</label>
+                <textarea id="constraints" class="input-editor" rows="2" placeholder="Policy, rules, team size… (optional)"></textarea>
+                <label for="businessContext" class="label-mt">Business context</label>
+                <textarea
+                  id="businessContext"
+                  class="input-editor"
+                  rows="3"
+                  placeholder="Project context, data, or rules…"
+                ></textarea>
+                <div id="codegenWrap" class="codegen-opts" hidden>
+                  <label for="codegenStack" class="label-mt">Stack hint</label>
+                  <select id="codegenStack" class="input-editor" style="min-height: 2.2rem; padding: 0.4rem 0.65rem">
+                    <option value="auto">auto (infer from spec)</option>
+                    <option value="android_kotlin">Android (Kotlin)</option>
+                    <option value="web_react">Web (React)</option>
+                    <option value="node_express">Node (Express)</option>
+                  </select>
+                  <label
+                    for="loadOrchestrated"
+                    class="label-mt"
+                    style="display: flex; align-items: flex-start; gap: 0.5rem; cursor: pointer; text-transform: none; letter-spacing: 0; font-size: 0.8rem; color: var(--text-dim, #4a4a45)"
+                  >
+                    <input type="checkbox" id="loadOrchestrated" style="width: auto; margin-top: 0.2rem" />
+                    <span
+                      >Use the latest <strong>Auto</strong> run from the server
+                      (<code>orchestrated_run/latest.md</code>) as the spec when the file exists; otherwise use the
+                      <strong>Business context / Specification</strong> text.</span
+                    >
+                  </label>
+                </div>
+              </div>
+              <div class="run-bar">
+                <button class="btn btn-primary" type="button" id="runBtn">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"
+                    ><path d="M8 5v14l11-7z"
+                  /></svg>
+                  Run
+                </button>
+              </div>
+            </div>
+          </section>
+
+          <section class="card card-terminal" aria-label="Response">
+            <div class="terminal-header">
+              <span class="terminal-title">Response</span>
+              <code class="terminal-badge">content</code>
+            </div>
+            <div id="out" class="out-block terminal-out" aria-live="polite"></div>
+            <div id="meta" class="meta-line"></div>
+          </section>
+
+          <section class="card card-dl" id="downloadPanel" hidden>
+            <div class="terminal-header">
+              <span class="terminal-title">Export</span>
+            </div>
+            <p class="hint dl-hint" id="dlHint">
+              Markdown/text from the response. <strong>dg_wireframe_spec</strong> can download server PNG/JPEG wireframes. Other
+              packs use a screenshot. <strong>Auto</strong> run: ZIP is the full bundle under
+              <code>orchestrated_agents/Output/orchestrated_run/</code> (combined <code>latest.md</code>, per-step
+              <code>steps/…/content.md</code>, <code>PROJECT_INDEX.md</code>, and copies of each agent's
+              <code>Output/</code> under their packs). Requires <code>ORCHESTRATOR_SAVE_OUTPUT=1</code> on the server.
+            </p>
+            <div class="btn-row">
+              <button type="button" class="btn btn-ghost" id="dlMd" disabled>Markdown</button>
+              <button type="button" class="btn btn-ghost" id="dlTxt" disabled>Text</button>
+              <button type="button" class="btn btn-ghost" id="dlPng" disabled>PNG</button>
+              <button type="button" class="btn btn-ghost" id="dlJpeg" disabled>JPEG</button>
+              <button type="button" class="btn btn-ghost" id="dlZip" disabled>ZIP</button>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="app.js?v=3" defer></script>
+  </body>
+</html>

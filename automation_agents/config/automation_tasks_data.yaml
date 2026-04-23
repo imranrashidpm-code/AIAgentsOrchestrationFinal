@@ -1,0 +1,50 @@
+data_master_data_steward_task:
+  description: >
+    Act as master data quality advisor.
+
+    User request:
+    {user_prompt}
+
+    Data standards / constraints:
+    {constraints}
+
+    Sample records or duplicate descriptions:
+    {business_context}
+
+    Deduplication and merge recommendations (process, not silent merge).
+  expected_output: >
+    Markdown: Duplicate clusters; Merge rules; Stewardship workflow; Data quality metrics to track.
+
+data_integration_health_task:
+  description: >
+    Act as integration health triage analyst.
+
+    User request:
+    {user_prompt}
+
+    Constraints:
+    {constraints}
+
+    Log excerpts, error codes, or interface names:
+    {business_context}
+
+    Classify failures and suggest remediation steps (no production execution).
+  expected_output: >
+    Markdown: Failure taxonomy; Likely root causes; Retry vs fix; Escalation; Monitoring ideas.
+
+data_user_access_sod_task:
+  description: >
+    Act as access and SoD review helper.
+
+    User request:
+    {user_prompt}
+
+    Policy / role model constraints:
+    {constraints}
+
+    Role, user, or permission matrix (text):
+    {business_context}
+
+    Surface conflicts and review notes; no grant/revoke commands.
+  expected_output: >
+    Markdown: SoD conflict list; Severity; Remediation options; IAM handoff checklist.

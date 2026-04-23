@@ -1,0 +1,121 @@
+dg_design_brief_task:
+  description: >
+    Create a design brief from the user request.
+
+    User request (what to design / achieve):
+    {user_prompt}
+
+    Constraints (brand, platform, scope, tech):
+    {constraints}
+
+    Product and audience context:
+    {business_context}
+  expected_output: >
+    Markdown: Problem; Goals; Non-goals; Users; Success metrics; Assumptions; Risks; Open questions.
+
+dg_user_research_task:
+  description: >
+    Propose a user research plan.
+
+    User request:
+    {user_prompt}
+
+    Constraints (time, geography, access):
+    {constraints}
+
+    Context (product, users, domains):
+    {business_context}
+  expected_output: >
+    Markdown: Questions; Methods; Participants; Timeline; Deliverables; How results inform design.
+
+dg_information_architecture_task:
+  description: >
+    Define information architecture for the experience described.
+
+    User request:
+    {user_prompt}
+
+    Constraints (nav patterns, SEO, languages):
+    {constraints}
+
+    Content and business context:
+    {business_context}
+  expected_output: >
+    Markdown: Mental model; Top-level nav; Site/app map (bulleted tree); Key flows; Labeling notes.
+
+dg_wireframe_spec_task:
+  description: >
+    Specify low-fidelity wireframes and interactions in text (the API may also attach a separate
+    Matplotlib “dashboard” raster for download — you still output a written spec in Markdown only here).
+
+    User request:
+    {user_prompt}
+
+    Constraints (devices, patterns to follow):
+    {constraints}
+
+    Prior IA or copy context:
+    {business_context}
+  expected_output: >
+    Markdown: Screen inventory; Per-screen layout description; Flow tables; Empty/loading/error states.
+
+dg_visual_ui_task:
+  description: >
+    Develop visual and UI direction from the prompt: look & feel, layout rhythm, type, color,
+    and component treatment as a written specification (no binary images).
+
+    User request:
+    {user_prompt}
+
+    Brand and platform constraints:
+    {constraints}
+
+    Context (competitors, audience, dark mode, etc.):
+    {business_context}
+  expected_output: >
+    Markdown: Visual principles; Color & type; Spacing; Key components & states; Responsive notes; A11y notes.
+
+dg_design_system_task:
+  description: >
+    Outline a starter design system (tokens + components) aligned to the request.
+
+    User request:
+    {user_prompt}
+
+    Technical and brand constraints:
+    {constraints}
+
+    Stack or product context:
+    {business_context}
+  expected_output: >
+    Markdown: Token table (spacing, radius, color roles, type); Core components; Variants; Usage dos/don’ts.
+
+dg_accessibility_spec_task:
+  description: >
+    Draft accessibility requirements and a test plan (WCAG 2.2-oriented).
+
+    User request:
+    {user_prompt}
+
+    Regulatory or org constraints:
+    {constraints}
+
+    Product context (web/mobile, auth flows, data viz):
+    {business_context}
+  expected_output: >
+    Markdown: Per-area acceptance criteria; Keyboard; Screen reader; Color/contrast; Forms; Test checklist.
+
+dg_dev_handoff_task:
+  description: >
+    Produce a developer handoff for what was designed or specified in the prompt and context.
+
+    User request:
+    {user_prompt}
+
+    Engineering constraints (framework, APIs, i18n):
+    {constraints}
+
+    Prior specs or design notes to incorporate:
+    {business_context}
+  expected_output: >
+    Markdown: Build scope; Component list; State matrix; Edge cases; Copy hooks; Open questions; Handoff checklist.

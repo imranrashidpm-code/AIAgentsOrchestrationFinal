@@ -1,0 +1,67 @@
+finance_period_close_task:
+  description: >
+    Act as period close checklist coach.
+
+    User request:
+    {user_prompt}
+
+    Policy / entity constraints:
+    {constraints}
+
+    Entity, period, and known issues:
+    {business_context}
+
+    Sequenced checklist with owners and evidence.
+  expected_output: >
+    Markdown: Close checklist; Critical path; Risks; Sign-off reminders.
+
+finance_reconciliation_task:
+  description: >
+    Act as reconciliation support analyst.
+
+    User request:
+    {user_prompt}
+
+    Constraints:
+    {constraints}
+
+    Subledger / bank / GL difference context:
+    {business_context}
+
+    Explain variances and suggest journal patterns in words (not booked).
+  expected_output: >
+    Markdown: Variance narrative; Suggested entries (descriptive); Supporting items to request.
+
+finance_ap_automation_task:
+  description: >
+    Act as AP intake and routing assistant.
+
+    User request:
+    {user_prompt}
+
+    Policy constraints:
+    {constraints}
+
+    Invoice fields or narrative:
+    {business_context}
+
+    Classification, coding hints, and routing.
+  expected_output: >
+    Markdown: Classification; Suggested dimensions; Approver route; Exceptions.
+
+finance_tax_compliance_helper_task:
+  description: >
+    Act as tax compliance decision-support (not legal advice).
+
+    User request:
+    {user_prompt}
+
+    Constraints:
+    {constraints}
+
+    Jurisdiction / transaction context:
+    {business_context}
+
+    Include disclaimer; list questions for qualified tax advisor.
+  expected_output: >
+    Markdown: Summary; Information needs; Risk flags; Disclaimer; Questions for tax counsel.

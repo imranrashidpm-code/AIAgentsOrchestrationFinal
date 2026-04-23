@@ -1,0 +1,80 @@
+pm_phase_initiation_task:
+  description: >
+    Produce **Initiation** documentation for the project or change described.
+
+    User request (new project, feature, major fix, or upgrade):
+    {user_prompt}
+
+    Constraints (org, budget band, compliance, deadline):
+    {constraints}
+
+    Business and technology context:
+    {business_context}
+  expected_output: >
+    Markdown: Executive summary; Problem & opportunity; Objectives & success measures; Stakeholders &
+    RACI sketch; Scope in/out; Assumptions & constraints; High-level risks; Approval checklist.
+
+pm_phase_planning_task:
+  description: >
+    Produce **Planning** documentation building on the request and context.
+
+    User request:
+    {user_prompt}
+
+    Planning constraints (methodology, fixed date, team size):
+    {constraints}
+
+    Context (dependencies, environments, vendors):
+    {business_context}
+  expected_output: >
+    Markdown: Scope statement; WBS-style outline; Milestones; Dependencies; Risk register (table);
+    Comms plan; Quality & test strategy (high level); Release approach (big-bang vs phased).
+
+pm_phase_execution_task:
+  description: >
+    Produce **Execution** documentation: how delivery will run day to day for this work.
+
+    User request:
+    {user_prompt}
+
+    Process constraints (Scrum, Kanban, enterprise gates):
+    {constraints}
+
+    Team & tooling context:
+    {business_context}
+  expected_output: >
+    Markdown: Ceremonies & cadence; DoD; Branching/PR expectations; Environments; Coordination
+    between parallel tracks; Escalation; Build vs buy for integrations.
+
+pm_phase_monitoring_task:
+  description: >
+    Produce **Monitoring & Controlling** documentation: tracking progress and managing change for
+    this project or program increment.
+
+    User request:
+    {user_prompt}
+
+    Reporting and compliance constraints:
+    {constraints}
+
+    Stakeholder and product context:
+    {business_context}
+  expected_output: >
+    Markdown: KPIs; Milestone / burndown-style reporting; Change control; RAID log template;
+    Quality gates; Issue escalation; Demo & sign-off cadence.
+
+pm_phase_closure_task:
+  description: >
+    Produce **Closure** documentation: how to hand over and close the project or release.
+
+    User request:
+    {user_prompt}
+
+    Sign-off and support constraints (SLA, on-call, training):
+    {constraints}
+
+    Handover and operational context:
+    {business_context}
+  expected_output: >
+    Markdown: Closure criteria; Handover to ops/support; Open defects & backlog transfer;
+    Documentation inventory; Lessons learned; Sign-off; Archive & retention.

@@ -1,0 +1,63 @@
+qts_test_plan_task:
+  description: >
+    Write a test plan for the work described.
+
+    User request:
+    {user_prompt}
+
+    Constraints (timeline, headcount, environments, automaton tools):
+    {constraints}
+
+    Product and quality context (release, criticality):
+    {business_context}
+  expected_output: >
+    Markdown: Objectives; In/out of scope; Test levels; Environments; Data & privacy; Test cases
+    (outline); Defect & exit criteria; Reporting; Assumptions.
+
+qts_risk_based_testing_task:
+  description: >
+    Produce a risk-based testing approach with prioritization for the system or feature.
+
+    User request:
+    {user_prompt}
+
+    Risk / compliance constraints:
+    {constraints}
+
+    Context (architectural, customer impact, data sensitivity):
+    {business_context}
+  expected_output: >
+    Markdown: Risk model; Ranked feature/area list; Suggested test depth; Mitigations; RBT
+    table (area | impact | likelihood | test focus).
+
+qts_e2e_feature_scope_task:
+  description: >
+    Define E2E test scope and scenarios for a feature.
+
+    User request:
+    {user_prompt}
+
+    Constraints (browsers, mobile, time budget):
+    {constraints}
+
+    Flows, roles, and integration points:
+    {business_context}
+  expected_output: >
+    Markdown: E2E journey list; Given/when/then in tables; Test data; Negative cases; Nightly vs
+    pre-release; CI gating; Open questions for automation engineers.
+
+qts_regression_strategy_task:
+  description: >
+    Propose a regression test strategy for ongoing releases in this context.
+
+    User request:
+    {user_prompt}
+
+    Constraints (release cadence, branches, canaries):
+    {constraints}
+
+    Tooling and service map context:
+    {business_context}
+  expected_output: >
+    Markdown: Smoke vs full; Automation pyramid reference; When to re-run what; Environments; Hotfix
+    path; Flake and stability practices; Metrics.

@@ -1,0 +1,50 @@
+workflow_case_triage_task:
+  description: >
+    Act as case / ticket routing specialist.
+
+    User request:
+    {user_prompt}
+
+    Routing rules:
+    {constraints}
+
+    Case facts, IDs, and history:
+    {business_context}
+
+    Target team, priority, and context package for the assignee.
+  expected_output: >
+    Markdown: Routed team; Priority; Context summary; Missing information to request.
+
+workflow_sop_training_task:
+  description: >
+    Act as SOP and training drafter.
+
+    User request:
+    {user_prompt}
+
+    Style and compliance constraints:
+    {constraints}
+
+    Process change or policy text:
+    {business_context}
+
+    SOP outline and training bullets with version header.
+  expected_output: >
+    Markdown: Title and version; Steps by role; Training objectives; Sign-off list.
+
+workflow_approval_workflow_task:
+  description: >
+    Act as approval packet preparer.
+
+    User request:
+    {user_prompt}
+
+    Delegation / policy constraints:
+    {constraints}
+
+    Decision context and evidence:
+    {business_context}
+
+    Packet for human approvers; no signatures.
+  expected_output: >
+    Markdown: Decision summary; Evidence index; Policy links; Approver chain recommendation.

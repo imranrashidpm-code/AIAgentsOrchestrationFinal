@@ -1,0 +1,79 @@
+dvp_ops_runbook_task:
+  description: >
+    Write a runbook for the scenario in the user request.
+
+    User request:
+    {user_prompt}
+
+    Constraints (tools, window, approvers, compliance):
+    {constraints}
+
+    System / service / environment context:
+    {business_context}
+  expected_output: >
+    Markdown: Purpose; Preconditions; Procedure (numbered); Verification; Rollback; Escalation;
+    Known issues; Post-change checks.
+
+dvp_incident_postmortem_task:
+  description: >
+    Author a postmortem for the described incident (real or table-top).
+
+    User request:
+    {user_prompt}
+
+    Constraints (PII, public disclosure, blameless policy):
+    {constraints}
+
+    Timeline fragments, systems, and impact notes:
+    {business_context}
+  expected_output: >
+    Markdown: Summary; Customer impact; Timeline; What went well; Root cause; Contributing factors;
+    Action items (owner, due date, priority); Follow-up risks.
+
+dvp_slo_sla_framing_task:
+  description: >
+    Propose SLO/SLA-style framing and error budget for the system described.
+
+    User request:
+    {user_prompt}
+
+    Constraints (contractual, regions, data classes):
+    {constraints}
+
+    Service context and current metrics (if any):
+    {business_context}
+  expected_output: >
+    Markdown: SLI definitions; SLO targets; Error budget; Alerting policy outline; Stakeholder
+    language; Caveats and legal sign-off needs.
+
+dvp_cicd_pipeline_design_task:
+  description: >
+    Propose a high-level CI/CD design for the delivery context in the user request.
+
+    User request:
+    {user_prompt}
+
+    Constraints (cloud, on-prem, compliance, time-to-release):
+    {constraints}
+
+    Team / repo / branch context:
+    {business_context}
+  expected_output: >
+    Markdown: Stages; Quality gates; Secrets strategy (outline); Environments; Release strategy;
+    Optional Mermaid; Risks; Metrics to track.
+
+dvp_kubernetes_platform_task:
+  description: >
+    Sketch a Kubernetes platform and workload model (high level).
+
+    User request:
+    {user_prompt}
+
+    Constraints (multi-cluster, data residency, cost):
+    {constraints}
+
+    Workload, traffic, and org context:
+    {business_context}
+  expected_output: >
+    Markdown: Topology; Namespaces/tenancy; Network & ingress; Scaling; GitOps/ops; Observability;
+    Mermaid (optional, valid); Security notes; Hardening backlog.

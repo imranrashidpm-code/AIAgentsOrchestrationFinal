@@ -1,0 +1,16 @@
+sec_privacy_threat_pii_task:
+  description: >
+    Produce a security and privacy design review for the product or feature described.
+
+    User request:
+    {user_prompt}
+
+    Constraints (jurisdictions, sector, B2B vs B2C, existing ISMS):
+    {constraints}
+
+    Context (data flows, third parties, identity provider, stores):
+    {business_context}
+  expected_output: >
+    Markdown: Scope & assets; Trust boundaries; Threat table (threat | impact | mitigations);
+    PII/PHI (if any) data map; Control checklist; Logging & redaction; Incident response touchpoints;
+    Residual risk; **Disclaimer: not legal advice — engage counsel and DPO where required**.

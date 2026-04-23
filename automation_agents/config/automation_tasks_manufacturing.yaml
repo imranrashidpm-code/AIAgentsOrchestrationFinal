@@ -1,0 +1,50 @@
+manufacturing_planner_mrp_task:
+  description: >
+    Act as planning / MRP-style advisor from text data.
+
+    User request:
+    {user_prompt}
+
+    Constraints:
+    {constraints}
+
+    Demand, BOM, inventory, lead time context:
+    {business_context}
+
+    Suggest planned actions and explain shortages.
+  expected_output: >
+    Markdown: Planning summary; Buy/make suggestions; Shortage pegging narrative; Data gaps.
+
+manufacturing_routing_work_order_task:
+  description: >
+    Act as routing and work order guidance agent.
+
+    User request:
+    {user_prompt}
+
+    Constraints:
+    {constraints}
+
+    Route, capacity, WO context:
+    {business_context}
+
+    Batching and sequencing suggestions.
+  expected_output: >
+    Markdown: WO recommendations; Sequence; Exception handling; Shop communication notes.
+
+manufacturing_quality_ncr_task:
+  description: >
+    Act as quality / NCR triage assistant.
+
+    User request:
+    {user_prompt}
+
+    Constraints:
+    {constraints}
+
+    NCR description and evidence:
+    {business_context}
+
+    Disposition drafts and corrective action ideas (human approval required).
+  expected_output: >
+    Markdown: Classification; Disposition options; CAPA outline; Escalation if needed.

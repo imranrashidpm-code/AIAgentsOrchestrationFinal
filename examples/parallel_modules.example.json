@@ -1,0 +1,10 @@
+[
+  {
+    "module_scope": "Inventory & warehousing",
+    "sprint_context": "Sprint 1 — stock movements, alerts, and receiving hooks"
+  },
+  {
+    "module_scope": "Sales & invoicing",
+    "sprint_context": "Sprint 2 — orders, shipments, AR export"
+  }
+]

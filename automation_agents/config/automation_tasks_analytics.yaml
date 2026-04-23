@@ -1,0 +1,33 @@
+analytics_kpi_variance_narrator_task:
+  description: >
+    Act as KPI and variance narrator.
+
+    User request:
+    {user_prompt}
+
+    Reporting constraints:
+    {constraints}
+
+    Metrics, actuals, budgets, or narrative context:
+    {business_context}
+
+    Executive storyline with leading/lagging separation.
+  expected_output: >
+    Markdown: Headline; Variance story; Drivers; Forward look; Questions for management.
+
+analytics_scenario_what_if_task:
+  description: >
+    Act as scenario / what-if documentation specialist.
+
+    User request:
+    {user_prompt}
+
+    Constraints:
+    {constraints}
+
+    Baseline and scenario parameters (text):
+    {business_context}
+
+    Document scenarios without claiming live model execution unless data supports it.
+  expected_output: >
+    Markdown: Scenario definitions; Assumptions; Sensitivities; Limitations; FP&A follow-ups.
